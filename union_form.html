@@ -3,518 +3,316 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>유니온인쇄출판 제작 문의</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<title>제작 문의 — 유니온 인쇄출판</title>
+<script src="options.js"></script>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: #f7f7f5; min-height: 100vh;
-  display: flex; align-items: flex-start; justify-content: center;
-  padding: 40px 16px;
-}
-.card {
-  background: #fff; border-radius: 16px;
-  border: 1px solid #e5e5e3; padding: 40px 36px;
-  width: 100%; max-width: 580px;
-}
-.logo { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
-.logo-mark {
-  width: 36px; height: 36px;
-  background: linear-gradient(135deg, #2bbfa0, #1a8f75);
-  border-radius: 8px; display: flex; align-items: center;
-  justify-content: center; color: white; font-weight: 700; font-size: 16px;
-}
-.logo-text { font-size: 16px; font-weight: 700; color: #222; letter-spacing: -0.3px; }
-.logo-sub { font-size: 11px; color: #888; letter-spacing: 1px; }
-h1 { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 6px; }
-.desc { font-size: 14px; color: #777; margin-bottom: 32px; line-height: 1.6; }
+  :root{
+    --mint:#4ECBBA; --mint-deep:#2FA898; --mint-soft:#E8F7F4;
+    --navy:#26333C; --navy2:#3A4B56;
+    --ink:#1E2A32; --sub:#5E7078; --faint:#94A5AD;
+    --line:#E1E8EA; --line2:#EEF3F4; --bg:#F7FAFA; --card:#FFFFFF;
+    --gold:#B7791F; --red:#D96A6A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px 60px}
 
-.item-sheet {
-  border: 1px solid #e0e0de; border-radius: 12px;
-  padding: 20px; margin-bottom: 14px; background: #fafafa;
-}
-.item-sheet.first { border-color: #2bbfa0; background: #f8fdfb; }
-.sheet-header {
-  display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
-}
-.sheet-label { font-size: 13px; font-weight: 700; color: #2bbfa0; letter-spacing: 0.5px; }
-.remove-btn {
-  background: none; border: 1px solid #ddd; border-radius: 6px;
-  font-size: 12px; color: #999; padding: 3px 10px; cursor: pointer;
-  font-family: inherit; transition: all 0.15s;
-}
-.remove-btn:hover { border-color: #e05; color: #e05; }
+  /* 헤더 */
+  header{padding:28px 0 20px;display:flex;align-items:center;gap:12px}
+  .logo{width:46px;height:46px;border-radius:12px;background:var(--mint);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-1px;box-shadow:0 4px 14px rgba(78,203,186,.35)}
+  .brand h1{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.2}
+  .brand span{font-size:11px;font-weight:600;color:var(--mint-deep);letter-spacing:2px}
 
-.sec-title {
-  font-size: 11px; font-weight: 700; color: #2bbfa0;
-  letter-spacing: 0.8px; text-transform: uppercase;
-  margin-bottom: 10px; margin-top: 16px;
-}
-.sec-title:first-child { margin-top: 0; }
+  /* 타이틀 */
+  .title-sec{margin-bottom:22px}
+  .title-sec h2{font-size:27px;font-weight:800;color:var(--navy);letter-spacing:-1px}
+  .title-sec p{color:var(--sub);font-size:14px;margin-top:6px}
 
-.radio-group { display: flex; flex-wrap: wrap; gap: 7px; }
-.radio-item {
-  display: flex; align-items: center;
-  background: #fff; border: 1px solid #e5e5e3;
-  border-radius: 20px; padding: 6px 13px;
-  cursor: pointer; transition: all 0.15s; font-size: 13px; color: #444;
-}
-.radio-item:has(input:checked) {
-  background: #e8f9f4; border-color: #2bbfa0; color: #0f6e56; font-weight: 500;
-}
-.radio-item input { display: none; }
+  /* 카드/필드 */
+  .field{margin-bottom:16px}
+  .field > label{display:block;font-size:13px;font-weight:700;color:var(--navy2);margin-bottom:7px}
+  .req{color:var(--red)}
+  input[type=text],input[type=number],input[type=email],input[type=tel],select,textarea{
+    width:100%;padding:12px 13px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-family:inherit;
+    background:var(--card);color:var(--ink);transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(78,203,186,.15)}
+  textarea{resize:vertical;min-height:80px}
+  select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235E7078' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px;cursor:pointer}
 
-.sub-options {
-  display: none;
-  background: #fff; border: 1px solid #d8f3ec;
-  border-radius: 10px; padding: 16px; margin-top: 12px;
-}
-.sub-options.visible { display: block; }
-.sub-label { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 8px; }
-.sub-radio-group { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.sub-radio-item {
-  display: flex; align-items: center;
-  background: #f5f5f3; border: 1px solid #e5e5e3;
-  border-radius: 16px; padding: 5px 11px;
-  cursor: pointer; font-size: 12px; color: #555; transition: all 0.15s;
-}
-.sub-radio-item:has(input:checked) {
-  background: #e8f9f4; border-color: #2bbfa0; color: #0f6e56; font-weight: 500;
-}
-.sub-radio-item input { display: none; }
+  /* 품목 블록 */
+  .product-block{background:var(--card);border:1.5px solid var(--mint);border-radius:16px;padding:20px;margin-bottom:16px;position:relative;box-shadow:0 2px 12px rgba(38,51,60,.04)}
+  .pb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .pb-head .pb-num{font-size:14px;font-weight:800;color:var(--mint-deep)}
+  .pb-remove{background:none;border:none;color:var(--faint);font-size:13px;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:6px}
+  .pb-remove:hover{background:#FBEAEA;color:var(--red)}
 
-.direct-input { display: none; margin-top: 8px; }
-.direct-input.visible { display: block; }
+  /* 품목 선택 칩 */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .chip{padding:9px 15px;border:1.5px solid var(--line);border-radius:22px;background:var(--card);font-size:13.5px;font-weight:600;color:var(--sub);cursor:pointer;transition:all .15s}
+  .chip:hover{border-color:var(--mint);color:var(--mint-deep)}
+  .chip.on{background:var(--mint);border-color:var(--mint);color:#fff;box-shadow:0 3px 10px rgba(78,203,186,.3)}
 
-.fl { display: block; font-size: 13px; color: #444; margin-bottom: 5px; font-weight: 500; }
-input[type=text], input[type=email], input[type=tel], textarea, select {
-  width: 100%; padding: 10px 13px;
-  border: 1px solid #ddd; border-radius: 8px;
-  font-size: 14px; color: #222; background: #fff;
-  transition: border-color 0.2s; font-family: inherit;
-}
-input:focus, textarea:focus, select:focus { outline: none; border-color: #2bbfa0; }
-textarea { resize: vertical; min-height: 70px; }
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.field { margin-bottom: 12px; }
+  /* 사양 그리드 */
+  .spec-wrap{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+  .spec-title{font-size:12.5px;font-weight:700;color:var(--mint-deep);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .spec-grid .field{margin-bottom:0}
+  .spec-grid .field.full{grid-column:1/-1}
+  @media(max-width:520px){.spec-grid{grid-template-columns:1fr}}
+  .spec-empty{color:var(--faint);font-size:13px;padding:8px 0}
 
-.add-btn {
-  width: 100%; padding: 12px;
-  background: #fff; color: #2bbfa0;
-  border: 1.5px dashed #2bbfa0; border-radius: 10px;
-  font-size: 14px; font-weight: 700; cursor: pointer;
-  margin-bottom: 24px; transition: background 0.15s; font-family: inherit;
-}
-.add-btn:hover { background: #f0fbf7; }
-.divider { border: none; border-top: 1.5px solid #eee; margin: 24px 0; }
-.contact-title {
-  font-size: 12px; font-weight: 700; color: #888;
-  letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 14px;
-}
-.submit-btn {
-  width: 100%; padding: 14px; background: #2bbfa0; color: #fff;
-  border: none; border-radius: 10px; font-size: 16px; font-weight: 700;
-  cursor: pointer; transition: background 0.2s; font-family: inherit;
-}
-.submit-btn:hover { background: #1a9e84; }
-.kakao-btn {
-  width: 100%; padding: 14px; background: #FEE500; color: #3C1E1E;
-  border: none; border-radius: 10px; font-size: 16px; font-weight: 700;
-  cursor: pointer; transition: filter 0.2s; font-family: inherit;
-  margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.kakao-btn:hover { filter: brightness(0.95); }
-.btn-divider {
-  text-align: center; font-size: 12px; color: #bbb; margin: 14px 0 4px;
-  position: relative;
-}
-.footer-note { font-size: 12px; color: #aaa; text-align: center; margin-top: 12px; }
-.required { color: #e05; font-size: 11px; margin-left: 2px; }
-.success-msg {
-  display: none; background: #e8f9f4; border: 1px solid #2bbfa0;
-  border-radius: 10px; padding: 24px; text-align: center;
-  color: #0f6e56; font-size: 15px; line-height: 1.8;
-}
+  /* 직접입력 인라인 */
+  .inline-custom{margin-top:7px}
+
+  /* 품목 추가 버튼 */
+  .add-btn{width:100%;padding:15px;border:2px dashed var(--mint);border-radius:14px;background:var(--mint-soft);color:var(--mint-deep);
+    font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;margin-bottom:22px;font-family:inherit}
+  .add-btn:hover{background:#DBF2EE}
+
+  /* 연락처 섹션 */
+  .contact-sec{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px;margin-bottom:22px}
+  .contact-sec h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:16px}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .contact-grid .full{grid-column:1/-1}
+  @media(max-width:520px){.contact-grid{grid-template-columns:1fr}}
+
+  /* 제출 */
+  .submit-btn{width:100%;padding:16px;border:none;border-radius:13px;background:var(--navy);color:#fff;font-size:16px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:-.3px}
+  .submit-btn:hover{background:var(--mint-deep);transform:translateY(-1px);box-shadow:0 8px 20px rgba(47,168,152,.3)}
+  .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .note{font-size:12px;color:var(--faint);text-align:center;margin-top:12px}
+
+  /* 완료 화면 */
+  .done{display:none;text-align:center;padding:60px 20px}
+  .done .check{width:72px;height:72px;border-radius:50%;background:var(--mint-soft);color:var(--mint-deep);display:grid;place-items:center;font-size:38px;margin:0 auto 20px}
+  .done h2{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:10px}
+  .done p{color:var(--sub);font-size:14px}
+  .done button{margin-top:24px;padding:12px 28px;border:1.5px solid var(--mint);border-radius:10px;background:#fff;color:var(--mint-deep);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+
+  .hint-row{background:var(--mint-soft);border-radius:10px;padding:10px 13px;font-size:12.5px;color:var(--mint-deep);margin-bottom:20px;line-height:1.5}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="logo">
-    <div class="logo-mark">U</div>
-    <div>
-      <div class="logo-text">유니온인쇄출판</div>
-      <div class="logo-sub">UNION PRINTING</div>
+<div class="wrap">
+  <header>
+    <div class="logo">U</div>
+    <div class="brand"><h1>유니온 인쇄출판</h1><span>UNION PRINTING</span></div>
+  </header>
+
+  <div id="formView">
+    <div class="title-sec">
+      <h2>제작 문의</h2>
+      <p>필요한 내용을 선택해 주시면 목적에 맞는 제작 방식과 견적을 안내드립니다.</p>
     </div>
+
+    <div class="hint-row">💡 잘 모르는 항목은 <b>"잘 모르겠음 (전문가 추천)"</b>을 선택하시면, 저희가 용도에 맞게 추천해 드려요.</div>
+
+    <div class="field">
+      <label>문의 제목 <span class="req">*</span></label>
+      <input type="text" id="inquiryTitle" placeholder="예: 행사 홍보물 제작 문의" required>
+    </div>
+
+    <div id="products"></div>
+
+    <button class="add-btn" onclick="addProduct()">＋ 다른 품목 추가하기</button>
+
+    <div class="contact-sec">
+      <h3>연락처 정보</h3>
+      <div class="contact-grid">
+        <div class="field"><label>담당자명 <span class="req">*</span></label><input type="text" id="cName" required></div>
+        <div class="field"><label>연락처 <span class="req">*</span></label><input type="tel" id="cPhone" placeholder="010-0000-0000" required></div>
+        <div class="field full"><label>이메일</label><input type="email" id="cEmail" placeholder="회신받을 이메일 (선택)"></div>
+        <div class="field full"><label>기관·회사명</label><input type="text" id="cOrg" placeholder="예: 청주시청 총무과 (선택)"></div>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">문의 보내기</button>
+    <p class="note">보내주신 내용은 담당자에게 이메일로 전달되며, 확인 후 빠르게 연락드립니다.</p>
   </div>
-  <h1>제작 문의</h1>
-  <p class="desc">필요한 내용을 작성해 주시면 목적에 맞는 제작 방식과 견적을 안내드립니다.</p>
 
-  <form id="inquiryForm">
-    <input type="hidden" name="access_key" value="f09ca078-a34b-4499-a8e5-6e9570dc3724">
-    <input type="hidden" name="subject" value="[유니온인쇄출판] 새 제작 문의가 접수되었습니다">
-    <input type="hidden" name="from_name" value="유니온 인쇄출판 홈페이지">
-    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-    <div class="field" style="margin-bottom:24px">
-      <label class="fl">문의 제목 <span class="required">*</span></label>
-      <input type="text" name="title" placeholder="예: 행사 홍보물 제작 문의" required>
-    </div>
-
-    <div id="sheetsContainer"></div>
-
-    <button type="button" class="add-btn" id="addSheetBtn">+ 다른 품목 추가하기</button>
-
-    <hr class="divider">
-
-    <div class="field">
-      <div class="contact-title">납품 및 연락처 정보</div>
-      <label class="fl">납품 장소 <span class="required">*</span></label>
-      <input type="text" name="place" placeholder="예: OO특별시 OO구 OO동 OO로 00" required>
-    </div>
-    <div class="field">
-      <label class="fl">수령 방법</label>
-      <select name="delivery">
-        <option value="">선택해주세요</option>
-        <option>배송 요청</option>
-        <option>직접 방문 수령</option>
-        <option>용달 & 경동택배</option>
-        <option>미정</option>
-      </select>
-    </div>
-    <div class="row">
-      <div class="field">
-        <label class="fl">이름 / 담당자명 <span class="required">*</span></label>
-        <input type="text" name="customer_name" placeholder="홍길동" required>
-      </div>
-      <div class="field">
-        <label class="fl">연락처 <span class="required">*</span></label>
-        <input type="tel" name="phone" placeholder="010-0000-0000" required>
-      </div>
-    </div>
-    <div class="field">
-      <label class="fl">이메일</label>
-      <input type="email" name="email" placeholder="example@email.com">
-    </div>
-
-    <button type="submit" class="submit-btn">📧 메일로 문의 접수하기</button>
-    <div class="btn-divider">또는</div>
-    <button type="button" class="kakao-btn" id="kakaoBtn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.9 1.9 5.4 4.7 6.8-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
-      카카오톡으로 문의하기
-    </button>
-    <p class="footer-note">접수 후 영업일 기준 1~2일 내 연락드립니다.</p>
-  </form>
-  <div class="success-msg" id="successMsg">
-    ✅ 문의가 정상적으로 접수되었습니다.<br>빠른 시일 내에 연락드리겠습니다. 감사합니다!
+  <div class="done" id="doneView">
+    <div class="check">✓</div>
+    <h2>문의가 접수되었습니다</h2>
+    <p>담당자가 확인 후 빠르게 연락드리겠습니다.<br>감사합니다 😊</p>
+    <button onclick="location.reload()">새 문의 작성하기</button>
   </div>
 </div>
 
 <script>
-const ITEMS = ['리플렛','브로슈어','포스터','전단','책자·보고서','현수막','X배너','명함','봉투','명찰','친환경 제작물','기타'];
+/* ====== Web3Forms 설정 ====== */
+const WEB3FORMS_KEY = "f09ca078-a34b-4499-a8e5-6e9570dc3724";
 
-const SUB_OPTIONS = {
-  '리플렛': [
-    { label: '규격', name: '규격', options: ['3단접지 (A4)', '2단접지 (A4)', 'A5', 'A6', '직접입력'] },
-    { label: '후가공', name: '후가공', options: ['유광 코팅', '무광 코팅', '없음', '직접입력'] }
-  ],
-  '브로슈어': [
-    { label: '규격', name: '규격', options: ['A4', 'A5', 'B5', '직접입력'] },
-    { label: '제본 방식', name: '제본방식', options: ['중철제본', '접지', '직접입력'] },
-    { label: '후가공', name: '후가공', options: ['유광 코팅', '무광 코팅', '없음', '직접입력'] }
-  ],
-  '포스터': [
-    { label: '규격', name: '규격', options: ['A1', 'A2', 'A3', 'A4', '직접입력'] },
-    { label: '후가공', name: '후가공', options: ['유광 코팅', '무광 코팅', '없음', '직접입력'] }
-  ],
-  '전단': [
-    { label: '규격', name: '규격', options: ['A4', 'A5', 'B5', '직접입력'] },
-    { label: '인쇄 방식', name: '인쇄방식', options: ['양면', '단면'] },
-    { label: '후가공', name: '후가공', options: ['유광 코팅', '무광 코팅', '없음', '직접입력'] }
-  ],
-  '책자·보고서': [
-    { label: '규격', name: '규격', options: ['A4', 'A5', 'B5', '직접입력'] },
-    { label: '인쇄 색상', name: '인쇄색상', options: ['칼라', '흑백', '표지 칼라 + 내지 흑백'] },
-    { label: '제본 방식', name: '제본방식', options: ['무선제본', '중철제본', '링제본', '스프링제본', '미정'] },
-    { label: '후가공 (표지)', name: '후가공', options: ['유광 코팅', '무광 코팅', '없음', '직접입력'] }
-  ],
-  '현수막': [
-    { label: '사이즈 (가로 × 세로)', name: '사이즈', options: ['직접입력'] },
-    { label: '후가공', name: '후가공', options: ['아일렛 - 노끈', '아일렛 - 큐방', '대나무 - 노끈', '열재단', '봉마감 (대나무 제외)', '미싱', '직접입력'] },
-    { label: '설치 여부', name: '설치여부', options: ['설치 필요', '설치 불필요', '미정'] }
-  ],
-  'X배너': [
-    { label: '규격', name: '규격', options: ['600×1600mm', '800×1800mm', '직접입력'] },
-    { label: '재질', name: '재질', options: ['PET'] },
-    { label: '거치대', name: '거치대', options: ['거치대 포함', '거치대 미포함'] }
-  ],
-  '명함': [
-    { label: '용지 종류', name: '용지', options: ['일반지 (500매)', '고급지 (200매)', '특수지 (수량 문의)'] },
-    { label: '후가공', name: '후가공', options: ['유광 코팅', '무광 코팅', '박 (금/은)', '형압', '에폭시', '없음', '직접입력'] }
-  ],
-  '봉투': [
-    { label: '종류', name: '종류', options: ['소봉투', '중봉투', '대봉투', '직접입력'] },
-    { label: '후가공', name: '후가공', options: ['창봉투', '양면테이프', '없음', '직접입력'] }
-  ],
-  '명찰': [
-    { label: '종류', name: '종류', options: ['목걸이명찰', '아크릴명찰'] },
-    { label: '규격 (직접입력)', name: '규격', options: ['직접입력'] }
-  ],
-  '친환경 제작물': [
-    { label: '품목 및 규격 (직접입력)', name: '품목및규격', options: ['직접입력'] },
-    { label: '_notice', name: '_notice', options: ['_notice'] }
-  ],
-  '기타': [
-    { label: '품목 및 내용 (직접입력)', name: '품목및내용', options: ['직접입력'] }
-  ]
-};
+const SPECS = window.UNION_PRODUCT_SPECS || {};
+const UNKNOWN = "잘 모르겠음 (전문가 추천)";
+let productSeq = 0;
+const productStates = {}; // id -> {type}
 
-let count = 0;
+function addProduct(){
+  const id = 'p'+(productSeq++);
+  productStates[id] = { type:'' };
+  const div = document.createElement('div');
+  div.className = 'product-block';
+  div.id = id;
+  div.innerHTML = renderProduct(id);
+  document.getElementById('products').appendChild(div);
+  updateRemoveButtons();
+}
 
-function buildSubOptions(item, idx) {
-  const subs = SUB_OPTIONS[item];
-  if (!subs) return '';
-  return subs.map((sub) => {
-    const key = `${sub.name}_${idx}`;
+function renderProduct(id){
+  const st = productStates[id];
+  const chips = Object.keys(SPECS).map(key=>
+    `<button type="button" class="chip ${st.type===key?'on':''}" onclick="selectType('${id}','${key}')">${SPECS[key].icon||''} ${SPECS[key].label}</button>`
+  ).join('');
+  const num = Object.keys(productStates).indexOf(id)+1;
+  return `
+    <div class="pb-head">
+      <span class="pb-num">제작 품목 ${num}</span>
+      <button type="button" class="pb-remove" onclick="removeProduct('${id}')">✕ 삭제</button>
+    </div>
+    <div class="field"><label>품목 선택 <span class="req">*</span></label>
+      <div class="chips">${chips}</div>
+    </div>
+    <div class="spec-wrap" id="${id}-spec">
+      <div class="spec-empty">먼저 품목을 선택해 주세요.</div>
+    </div>`;
+}
 
-    // 친환경 안내문
-    if (sub.name === '_notice') {
-      return `
-        <div style="background:#fff8e1;border:2px solid #f5a623;border-radius:8px;padding:14px 16px;margin-top:4px;font-size:12px;color:#7a4f00;line-height:1.8;">
-          <div style="font-size:13px;font-weight:700;color:#c47d00;margin-bottom:6px;">⚠️ 친환경 인쇄 제작 안내</div>
-          🌿 <strong>콩기름 인쇄</strong>, <strong>친환경 종이 인증서</strong>가 필요하신 경우 아래 요청사항란에 작성해주세요.<br><br>
-          <span style="background:#ffe082;padding:2px 6px;border-radius:4px;font-weight:700;">⏰ 제작 기간이 일반 인쇄보다 길어질 수 있습니다.</span><br>
-          소재 수급 및 제작 공정에 따라 납기가 지연될 수 있으므로,<br>견적 문의 시 <strong>희망 납기일을 반드시 함께 알려주세요.</strong>
-        </div>`;
+function selectType(id,key){
+  productStates[id].type = key;
+  productStates[id].vals = {};
+  // 칩 상태 갱신
+  const block = document.getElementById(id);
+  block.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  block.querySelectorAll('.chip').forEach(c=>{ if(c.textContent.trim().endsWith(SPECS[key].label)) c.classList.add('on'); });
+  renderSpecs(id,key);
+}
+
+function renderSpecs(id,key){
+  const spec = SPECS[key];
+  const wrap = document.getElementById(id+'-spec');
+  if(!spec || !spec.fields.length){ wrap.innerHTML=''; return; }
+  const fields = spec.fields.map(f=>{
+    const fid = `${id}__${f.key}`;
+    if(f.type==='select'){
+      const opts = [...f.options, UNKNOWN].map(o=>`<option value="${o}">${o}</option>`).join('');
+      return `<div class="field ${f.options.length>6?'full':''}">
+        <label>${f.label}</label>
+        <select id="${fid}" onchange="onSpecChange('${id}','${f.key}',this.value)"><option value="">선택</option>${opts}</select>
+        <div class="inline-custom" id="${fid}-custom" style="display:none">
+          <input type="text" placeholder="직접 입력해 주세요" oninput="setCustom('${id}','${f.key}',this.value)">
+        </div>
+      </div>`;
     }
-
-    // 직접입력만 있는 경우
-    const directOnly = sub.options.length === 1 && sub.options[0] === '직접입력';
-    if (directOnly) {
-      return `
-        <div class="sub-label" style="margin-top:10px">${sub.label}</div>
-        <input type="text" name="${key}" placeholder="직접 입력해주세요" style="margin-top:4px">
-      `;
-    }
-
-    const hasDirectInput = sub.options.includes('직접입력');
-    const radios = sub.options.map(opt => {
-      if (opt === '직접입력') return `
-        <label class="sub-radio-item"><input type="radio" name="${key}" value="직접입력">직접입력</label>`;
-      return `<label class="sub-radio-item"><input type="radio" name="${key}" value="${opt}">${opt}</label>`;
-    }).join('');
-    const directField = hasDirectInput ? `
-      <div class="direct-input" id="direct_${key}">
-        <input type="text" name="${key}_직접" placeholder="직접 입력해주세요">
-      </div>` : '';
-    return `
-      <div class="sub-label" style="margin-top:10px">${sub.label}</div>
-      <div class="sub-radio-group">${radios}</div>
-      ${directField}
-    `;
+    const t = f.type==='number'?'number':'text';
+    return `<div class="field">
+      <label>${f.label}</label>
+      <input type="${t}" id="${fid}" placeholder="${f.placeholder||''}" oninput="onSpecChange('${id}','${f.key}',this.value)">
+    </div>`;
   }).join('');
+  wrap.innerHTML = `<div class="spec-title">📋 ${spec.label} 상세 사양</div><div class="spec-grid">${fields}</div>`;
 }
 
-function toggleDirect(radioLabel, directId) {
-  const el = document.getElementById(directId);
-  if (el) {
-    el.classList.add('visible');
-    const input = el.querySelector('input');
-    if (input) setTimeout(() => input.focus(), 50);
-  }
-  const group = radioLabel.closest('.sub-radio-group');
-  if (group) {
-    group.querySelectorAll('.sub-radio-item').forEach(lbl => {
-      if (lbl !== radioLabel) {
-        const val = lbl.querySelector('input').value;
-        const dId = 'direct_' + lbl.closest('.sub-options').querySelector(`input[name]`)?.name?.replace('_직접','');
-        if (val !== '직접입력') {
-          const otherDirect = lbl.closest('.sub-options').querySelector('.direct-input');
-        }
-      }
+function onSpecChange(id,fkey,val){
+  productStates[id].vals = productStates[id].vals||{};
+  productStates[id].vals[fkey] = val;
+  // '직접입력' 선택 시 커스텀 인풋 표시
+  const custom = document.getElementById(`${id}__${fkey}-custom`);
+  if(custom) custom.style.display = (val==='직접입력')?'block':'none';
+}
+function setCustom(id,fkey,val){
+  productStates[id].vals = productStates[id].vals||{};
+  productStates[id].vals[fkey+'__custom'] = val;
+}
+
+function removeProduct(id){
+  delete productStates[id];
+  document.getElementById(id).remove();
+  renumber();
+  updateRemoveButtons();
+}
+function renumber(){
+  Object.keys(productStates).forEach((id,i)=>{
+    const el = document.querySelector(`#${id} .pb-num`);
+    if(el) el.textContent = `제작 품목 ${i+1}`;
+  });
+}
+function updateRemoveButtons(){
+  const ids = Object.keys(productStates);
+  ids.forEach(id=>{
+    const btn = document.querySelector(`#${id} .pb-remove`);
+    if(btn) btn.style.display = ids.length>1?'':'none';
+  });
+}
+
+function buildMessage(){
+  let msg = '';
+  Object.keys(productStates).forEach((id,i)=>{
+    const st = productStates[id];
+    if(!st.type){ return; }
+    const spec = SPECS[st.type];
+    msg += `\n■ 제작 품목 ${i+1}: ${spec.label}\n`;
+    (spec.fields||[]).forEach(f=>{
+      let v = (st.vals&&st.vals[f.key])||'';
+      if(v==='직접입력') v = (st.vals[f.key+'__custom']||'(직접입력 미기재)');
+      if(v==='') v = '—';
+      msg += `   · ${f.label}: ${v}\n`;
     });
-  }
-}
-
-function handleRadioChange(sheet, idx) {
-  const selected = sheet.querySelector(`input[name="품목_${idx}"]:checked`);
-  const subBox = sheet.querySelector('.sub-options');
-  const subInner = sheet.querySelector('.sub-inner');
-  if (!selected) { subBox.classList.remove('visible'); return; }
-  const item = selected.value;
-  subInner.innerHTML = buildSubOptions(item, idx);
-  subBox.classList.add('visible');
-
-  subInner.querySelectorAll('.sub-radio-group').forEach(grp => {
-    grp.querySelectorAll('input[type=radio]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        const directId = 'direct_' + this.name;
-        const directEl = document.getElementById(directId);
-        if (directEl) {
-          if (this.value === '직접입력') {
-            directEl.classList.add('visible');
-          } else {
-            directEl.classList.remove('visible');
-          }
-        }
-      });
-    });
   });
+  return msg;
 }
 
-function createSheet(idx, isFirst) {
-  const sheet = document.createElement('div');
-  sheet.className = 'item-sheet' + (isFirst ? ' first' : '');
-  sheet.dataset.index = idx;
-  sheet.innerHTML = `
-    <div class="sheet-header">
-      <span class="sheet-label">제작 품목 ${idx}</span>
-      ${isFirst ? '' : '<button type="button" class="remove-btn" onclick="this.closest(\'.item-sheet\').remove()">✕ 삭제</button>'}
-    </div>
+async function submitForm(){
+  const title = document.getElementById('inquiryTitle').value.trim();
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  if(!title){ alert('문의 제목을 입력해 주세요.'); return; }
+  const hasType = Object.values(productStates).some(s=>s.type);
+  if(!hasType){ alert('제작할 품목을 하나 이상 선택해 주세요.'); return; }
+  if(!name){ alert('담당자명을 입력해 주세요.'); return; }
+  if(!phone){ alert('연락처를 입력해 주세요.'); return; }
 
-    <div class="sec-title">품목 선택</div>
-    <div class="radio-group">
-      ${ITEMS.map(item => `<label class="radio-item"><input type="radio" name="품목_${idx}" value="${item}">${item}</label>`).join('')}
-    </div>
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = '보내는 중…';
 
-    <div class="sub-options" id="sub_${idx}">
-      <div class="sub-inner"></div>
-    </div>
+  const org = document.getElementById('cOrg').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const specMsg = buildMessage();
 
-    <div class="sec-title" style="margin-top:16px">제작 정보</div>
-    <div class="row">
-      <div class="field">
-        <label class="fl">예상 수량</label>
-        <input type="text" name="수량_${idx}" placeholder="예: 500부">
-      </div>
-      <div class="field">
-        <label class="fl">희망 납품일</label>
-        <input type="text" name="납품일_${idx}" placeholder="예: 5월 20일">
-      </div>
-    </div>
-    <div class="field">
-      <label class="fl">디자인 여부</label>
-      <select name="디자인여부_${idx}">
-        <option value="">선택해주세요</option>
-        <option>디자인 포함 제작</option>
-        <option>인쇄만 진행 (파일 있음)</option>
-        <option>기존 파일 수정 후 인쇄</option>
-        <option>미정 / 상담 후 결정</option>
-      </select>
-    </div>
-    <div class="field">
-      <label class="fl">추가 요청사항</label>
-      <textarea name="요청사항_${idx}" placeholder="색상, 후가공, 특이사항 등 자유롭게 작성해주세요."></textarea>
-    </div>
-  `;
-  sheet.querySelectorAll(`input[name="품목_${idx}"]`).forEach(radio => {
-    radio.addEventListener('change', () => handleRadioChange(sheet, idx));
-  });
-  return sheet;
-}
-
-function addSheet(isFirst) {
-  count++;
-  const sheet = createSheet(count, isFirst);
-  document.getElementById('sheetsContainer').appendChild(sheet);
-}
-
-addSheet(true);
-document.getElementById('addSheetBtn').addEventListener('click', () => addSheet(false));
-
-// 폼 내용을 읽기 좋은 텍스트로 정리 (메일·카톡 공용)
-function buildMessage() {
-  const form = document.getElementById('inquiryForm');
-  const fd = new FormData(form);
-  const LABELS = {
-    title:'문의 제목', place:'납품 장소', delivery:'수령 방법',
-    customer_name:'성함', phone:'연락처', email:'이메일'
-  };
-  const head = [];
-  Object.keys(LABELS).forEach(k => {
-    const v = fd.get(k);
-    if (v && String(v).trim()) head.push(`${LABELS[k]}: ${v}`);
-  });
-  const itemBlocks = {};
-  const fixed = new Set(['access_key','subject','from_name','botcheck','message', ...Object.keys(LABELS)]);
-  for (const [key, val] of fd.entries()) {
-    if (fixed.has(key)) continue;
-    if (val == null || String(val).trim() === '') continue;
-    const m = key.match(/^(.*)_(\d+)(?:_직접)?$/);
-    if (m) {
-      const field = m[1].replace(/_직접$/,'');
-      (itemBlocks[m[2]] = itemBlocks[m[2]] || []).push(`  · ${field}: ${val}`);
-    } else {
-      head.push(`${key}: ${val}`);
-    }
-  }
-  let message = '■ 제작 문의 내용\n\n' + head.join('\n') + '\n';
-  Object.keys(itemBlocks).sort((a,b)=>a-b).forEach((idx, i) => {
-    message += `\n[ 품목 ${i+1} ]\n` + itemBlocks[idx].join('\n') + '\n';
-  });
-  message += '\n────────────────\n유니온 인쇄출판 홈페이지 견적 문의';
-  return message;
-}
-
-// ── 카카오톡으로 문의 ──
-document.getElementById('kakaoBtn').addEventListener('click', async function() {
-  const form = document.getElementById('inquiryForm');
-  if (!form.checkValidity()) { form.reportValidity(); return; }
-
-  const message = buildMessage();
-  // 클립보드에 내용 복사 (실패해도 채팅창은 열림)
-  try {
-    await navigator.clipboard.writeText(message);
-    alert('문의 내용이 복사되었습니다.\n카카오톡 채팅창이 열리면 붙여넣기(길게 눌러 붙여넣기) 후 전송해 주세요.');
-  } catch (err) {
-    alert('카카오톡 채팅창이 열립니다.\n아래 내용을 채팅창에 입력해 주세요.\n\n' + message);
-  }
-  // 카카오톡 채널 채팅 열기
-  window.open('https://pf.kakao.com/_bWxmSn/chat', '_blank');
-});
-
-document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const form = e.target;
-
-  if (!form.checkValidity()) { form.reportValidity(); return; }
-
-  const btn = form.querySelector('button[type="submit"]');
-  const btnText = btn ? btn.textContent : '';
-  if (btn) { btn.disabled = true; btn.textContent = '전송 중...'; }
-
-  const message = buildMessage();
-
-  // 개별 한글 필드를 보내지 않고, 정리된 payload만 JSON으로 전송 → 인코딩 깨짐 없음
   const payload = {
-    access_key: 'f09ca078-a34b-4499-a8e5-6e9570dc3724',
-    subject: '[유니온인쇄출판] 새 제작 문의가 접수되었습니다',
-    from_name: '유니온 인쇄출판 홈페이지',
-    message: message
+    access_key: WEB3FORMS_KEY,
+    subject: `[제작문의] ${title}`,
+    from_name: `${name}${org?' ('+org+')':''}`,
+    "문의제목": title,
+    "담당자": name,
+    "연락처": phone,
+    "이메일": email||'(미기재)',
+    "기관·회사": org||'(미기재)',
+    "제작내용": specMsg
   };
 
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
+  try{
+    const res = await fetch("https://api.web3forms.com/submit",{
+      method:"POST",
+      headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify(payload)
     });
     const data = await res.json();
-    if (res.ok && data.success) {
-      form.style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    } else {
-      alert('전송에 실패했습니다. 잠시 후 다시 시도하시거나 043-273-0929로 연락 주세요.');
-      if (btn) { btn.disabled = false; btn.textContent = btnText; }
+    if(data.success){
+      document.getElementById('formView').style.display='none';
+      document.getElementById('doneView').style.display='block';
+      window.scrollTo(0,0);
+    }else{
+      alert('전송에 실패했어요. 잠시 후 다시 시도하거나 전화로 문의해 주세요.\n(043-273-0929)');
+      btn.disabled=false; btn.textContent='문의 보내기';
     }
-  } catch (err) {
-    alert('네트워크 오류입니다. 잠시 후 다시 시도하시거나 043-273-0929로 연락 주세요.');
-    if (btn) { btn.disabled = false; btn.textContent = btnText; }
+  }catch(e){
+    alert('전송 중 오류가 발생했어요. 전화로 문의해 주세요.\n(043-273-0929)');
+    btn.disabled=false; btn.textContent='문의 보내기';
   }
-});
+}
 
-
-
+// 초기 품목 1개
+addProduct();
 </script>
 </body>
 </html>
