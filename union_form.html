@@ -90,6 +90,64 @@
   .done button{margin-top:24px;padding:12px 28px;border:1.5px solid var(--mint);border-radius:10px;background:#fff;color:var(--mint-deep);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
 
   .hint-row{background:var(--mint-soft);border-radius:10px;padding:10px 13px;font-size:12.5px;color:var(--mint-deep);margin-bottom:20px;line-height:1.5}
+
+  /* 종이 두께 시각화 */
+  .paper-viz{margin-top:8px;padding:14px 15px;background:var(--bg);border:1px solid var(--line2);border-radius:10px}
+  .paper-viz-title{font-size:11.5px;font-weight:700;color:var(--sub);margin-bottom:14px;display:flex;align-items:center;gap:5px}
+  .paper-bars{display:flex;align-items:flex-end;gap:10px;height:70px;padding:0 4px}
+  .paper-bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;cursor:pointer;height:100%}
+  .paper-bar .bar{width:100%;min-height:10px;background:linear-gradient(180deg,#CBE3DE,#A6D0C8);border-radius:4px 4px 2px 2px;transition:all .18s;border:2px solid transparent}
+  .paper-bar .lbl{font-size:11px;font-weight:700;color:var(--faint);white-space:nowrap}
+  .paper-bar:hover .bar{background:linear-gradient(180deg,#AEDAD1,#7DBFB3)}
+  .paper-bar.on .bar{background:linear-gradient(180deg,var(--mint),var(--mint-deep));border-color:var(--navy2);box-shadow:0 4px 10px rgba(47,168,152,.3)}
+  .paper-bar.on .lbl{color:var(--mint-deep);font-weight:800}
+  .paper-viz-cap{font-size:11.5px;color:var(--faint);margin-top:12px;text-align:center;line-height:1.5}
+
+  /* 파일 첨부 */
+  .file-drop{border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;cursor:pointer;transition:all .15s;background:var(--card)}
+  .file-drop:hover{border-color:var(--mint);background:var(--mint-soft)}
+  .file-drop .ico{font-size:24px;margin-bottom:4px}
+  .file-drop .t1{font-size:13px;font-weight:700;color:var(--navy2)}
+  .file-drop .t2{font-size:11.5px;color:var(--faint);margin-top:3px}
+  .file-list{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+  .file-item{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:8px 11px;font-size:12.5px}
+  .file-item .fn{flex:1;font-weight:600;color:var(--navy2);word-break:break-all}
+  .file-item .fs{color:var(--faint);font-size:11px;white-space:nowrap}
+  .file-item .fx{background:none;border:none;color:var(--faint);cursor:pointer;font-size:14px;padding:2px 5px}
+  .file-item .fx:hover{color:var(--red)}
+
+  /* 개인정보 동의 */
+  .agree-box{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+  .agree-row{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+  .agree-row input{width:18px;height:18px;margin-top:1px;accent-color:var(--mint-deep);cursor:pointer;flex:none}
+  .agree-row .at{font-size:13px;color:var(--navy2);font-weight:600;line-height:1.5}
+  .agree-detail{font-size:11.5px;color:var(--faint);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);line-height:1.6}
+
+  /* 요약 모달 */
+  .ov{display:none;position:fixed;inset:0;background:rgba(30,42,50,.5);z-index:100;padding:20px;overflow-y:auto}
+  .ov.on{display:flex;align-items:flex-start;justify-content:center}
+  .ov-box{background:#fff;border-radius:16px;max-width:520px;width:100%;margin:24px auto;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .ov-box h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:5px}
+  .ov-box .ov-sub{font-size:12.5px;color:var(--sub);margin-bottom:18px}
+  .ov-sec{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line2)}
+  .ov-sec:last-of-type{border-bottom:none}
+  .ov-sec .ov-h{font-size:12px;font-weight:800;color:var(--mint-deep);margin-bottom:7px}
+  .ov-line{display:flex;font-size:13px;margin-bottom:4px;line-height:1.5}
+  .ov-line .k{color:var(--faint);width:92px;flex:none;font-weight:600}
+  .ov-line .v{color:var(--ink);flex:1}
+  .ov-btns{display:flex;gap:10px;margin-top:8px}
+  .ov-btns button{flex:1;padding:13px;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;border:none}
+  .ov-cancel{background:var(--line2);color:var(--sub)}
+  .ov-send{background:var(--navy);color:#fff}
+  .ov-send:hover{background:var(--mint-deep)}
+
+  /* 지난 문의 */
+  .past-link{text-align:center;margin-bottom:18px}
+  .past-link button{background:none;border:none;color:var(--mint-deep);font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:underline;font-family:inherit}
+  .past-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;text-align:left}
+  .past-item .pt{font-size:13.5px;font-weight:700;color:var(--navy2)}
+  .past-item .pd{font-size:11px;color:var(--faint);margin-top:2px}
+  .past-item .pp{font-size:12px;color:var(--sub);margin-top:6px;white-space:pre-wrap;line-height:1.5}
 </style>
 </head>
 <body>
@@ -107,6 +165,10 @@
 
     <div class="hint-row">💡 잘 모르는 항목은 <b>"잘 모르겠음 (전문가 추천)"</b>을 선택하시면, 저희가 용도에 맞게 추천해 드려요.</div>
 
+    <div class="past-link" id="pastLink" style="display:none">
+      <button onclick="showPast()">📋 이 기기에서 보낸 지난 문의 보기</button>
+    </div>
+
     <div class="field">
       <label>문의 제목 <span class="req">*</span></label>
       <input type="text" id="inquiryTitle" placeholder="예: 행사 홍보물 제작 문의" required>
@@ -120,13 +182,35 @@
       <h3>연락처 정보</h3>
       <div class="contact-grid">
         <div class="field"><label>담당자명 <span class="req">*</span></label><input type="text" id="cName" required></div>
-        <div class="field"><label>연락처 <span class="req">*</span></label><input type="tel" id="cPhone" placeholder="010-0000-0000" required></div>
+        <div class="field"><label>연락처 <span class="req">*</span></label><input type="tel" id="cPhone" placeholder="010-0000-0000" inputmode="numeric" oninput="autoHyphen(this)" required></div>
         <div class="field full"><label>이메일</label><input type="email" id="cEmail" placeholder="회신받을 이메일 (선택)"></div>
         <div class="field full"><label>기관·회사명</label><input type="text" id="cOrg" placeholder="예: 청주시청 총무과 (선택)"></div>
       </div>
     </div>
 
-    <button class="submit-btn" id="submitBtn" onclick="submitForm()">문의 보내기</button>
+    <div class="contact-sec">
+      <h3>참고 파일 <span style="font-size:11px;font-weight:600;color:var(--faint)">선택</span></h3>
+      <div class="file-drop" onclick="document.getElementById('fileInput').click()">
+        <div class="ico">📎</div>
+        <div class="t1">시안·로고·참고 이미지 첨부</div>
+        <div class="t2">클릭해서 파일 선택 · 최대 3개 · 각 4MB 이하</div>
+      </div>
+      <input type="file" id="fileInput" multiple accept="image/*,.pdf,.ai,.psd,.hwp,.zip" style="display:none" onchange="onFilePick(event)">
+      <div class="file-list" id="fileList"></div>
+    </div>
+
+    <div class="agree-box">
+      <label class="agree-row">
+        <input type="checkbox" id="agreePrivacy">
+        <span class="at">(필수) 개인정보 수집·이용에 동의합니다. <span class="req">*</span></span>
+      </label>
+      <div class="agree-detail">
+        수집 항목: 담당자명·연락처·이메일·기관명 / 목적: 문의 응대 및 견적 안내 / 보유: 문의 처리 후 1년<br>
+        문의 응대를 위한 최소한의 정보만 수집하며, 동의를 거부하실 수 있으나 이 경우 문의 접수가 제한됩니다.
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="openSummary()">문의 내용 확인하기</button>
     <p class="note">보내주신 내용은 담당자에게 이메일로 전달되며, 확인 후 빠르게 연락드립니다.</p>
   </div>
 
@@ -134,7 +218,34 @@
     <div class="check">✓</div>
     <h2>문의가 접수되었습니다</h2>
     <p>담당자가 확인 후 빠르게 연락드리겠습니다.<br>감사합니다 😊</p>
+    <div id="doneSummary" style="max-width:480px;margin:22px auto 0;text-align:left"></div>
     <button onclick="location.reload()">새 문의 작성하기</button>
+  </div>
+</div>
+
+<!-- 제출 전 요약 모달 -->
+<div class="ov" id="summaryOv">
+  <div class="ov-box">
+    <h3>이 내용으로 보낼까요?</h3>
+    <div class="ov-sub">보내기 전에 한 번 확인해 주세요.</div>
+    <div id="summaryBody"></div>
+    <div class="ov-btns">
+      <button class="ov-cancel" onclick="closeSummary()">← 다시 수정</button>
+      <button class="ov-send" id="ovSendBtn" onclick="submitForm()">문의 보내기 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- 지난 문의 모달 -->
+<div class="ov" id="pastOv">
+  <div class="ov-box">
+    <h3>이 기기에서 보낸 지난 문의</h3>
+    <div class="ov-sub">이 브라우저에 저장된 기록이에요. (다른 기기에서는 보이지 않아요)</div>
+    <div id="pastBody"></div>
+    <div class="ov-btns">
+      <button class="ov-cancel" onclick="closePast()">닫기</button>
+      <button class="ov-send" onclick="clearPast()" style="background:var(--red)">기록 전체 삭제</button>
+    </div>
   </div>
 </div>
 
@@ -193,6 +304,18 @@ function renderSpecs(id,key){
   if(!spec || !spec.fields.length){ wrap.innerHTML=''; return; }
   const fields = spec.fields.map(f=>{
     const fid = `${id}__${f.key}`;
+    // 평량(weight) 필드는 두께 시각화로
+    const isWeight = /weight/.test(f.key) || /평량/.test(f.label);
+    if(f.type==='select' && isWeight){
+      return `<div class="field full">
+        <label>${f.label}</label>
+        <div class="paper-viz">
+          <div class="paper-viz-title">📄 종이가 두꺼워질수록 고급스럽고 빳빳해요</div>
+          <div class="paper-bars" id="${fid}-viz">${paperBars(id,f)}</div>
+          <div class="paper-viz-cap" id="${fid}-cap">막대를 눌러 평량을 선택하세요</div>
+        </div>
+      </div>`;
+    }
     if(f.type==='select'){
       const opts = [...f.options, UNKNOWN].map(o=>`<option value="${o}">${o}</option>`).join('');
       return `<div class="field ${f.options.length>6?'full':''}">
@@ -210,6 +333,36 @@ function renderSpecs(id,key){
     </div>`;
   }).join('');
   wrap.innerHTML = `<div class="spec-title">📋 ${spec.label} 상세 사양</div><div class="spec-grid">${fields}</div>`;
+}
+
+// 평량 막대 그림 생성 (100g→300g 두꺼워짐)
+function paperBars(id, f){
+  const gs = f.options.map(o=>({raw:o, n:parseInt(o)})).filter(x=>!isNaN(x.n));
+  if(!gs.length) return '';
+  const min=Math.min(...gs.map(x=>x.n)), max=Math.max(...gs.map(x=>x.n));
+  return gs.map(g=>{
+    // 두께: 최소 22% ~ 최대 100% 높이로 매핑 (차이를 크게)
+    const h = max===min ? 70 : Math.round(22 + (g.n-min)/(max-min)*78);
+    return `<div class="paper-bar" data-g="${g.raw}" onclick="pickWeight('${id}','${f.key}','${g.raw}',this)">
+      <div class="bar" style="height:${h}%"></div>
+      <div class="lbl">${g.raw}</div>
+    </div>`;
+  }).join('') + `<div class="paper-bar" data-g="${UNKNOWN}" onclick="pickWeight('${id}','${f.key}','${UNKNOWN}',this)" title="전문가 추천">
+      <div class="bar" style="height:16%;background:linear-gradient(180deg,#EEE,#DDD);border-style:dashed;border-color:#CCC"></div>
+      <div class="lbl" style="font-size:10px">추천</div>
+    </div>`;
+}
+function pickWeight(id,fkey,val,elBar){
+  const viz = elBar.parentElement;
+  viz.querySelectorAll('.paper-bar').forEach(b=>b.classList.remove('on'));
+  elBar.classList.add('on');
+  onSpecChange(id,fkey,val);
+  const cap = document.getElementById(`${id}__${fkey}-cap`);
+  if(cap){
+    cap.innerHTML = val===UNKNOWN
+      ? '✓ 전문가 추천으로 선택됨 — 용도에 맞게 골라드려요'
+      : `✓ <b style="color:var(--mint-deep)">${val}</b> 선택됨`;
+  }
 }
 
 function onSpecChange(id,fkey,val){
@@ -244,6 +397,89 @@ function updateRemoveButtons(){
   });
 }
 
+// ── 전화번호 자동 하이픈 ──
+function autoHyphen(el){
+  let v = el.value.replace(/[^\d]/g,'').slice(0,11);
+  if(v.length<4) el.value=v;
+  else if(v.length<8) el.value=v.slice(0,3)+'-'+v.slice(3);
+  else el.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+}
+
+// ── 파일 첨부 ──
+const attachedFiles = []; // {file, name, size}
+function onFilePick(ev){
+  const picked = Array.from(ev.target.files||[]);
+  for(const f of picked){
+    if(attachedFiles.length>=3){ alert('파일은 최대 3개까지 첨부할 수 있어요.'); break; }
+    if(f.size > 4*1024*1024){ alert(`"${f.name}"은(는) 4MB를 넘어 첨부할 수 없어요.`); continue; }
+    attachedFiles.push({file:f, name:f.name, size:f.size});
+  }
+  ev.target.value='';
+  renderFileList();
+}
+function renderFileList(){
+  const box = document.getElementById('fileList');
+  box.innerHTML = attachedFiles.map((f,i)=>`
+    <div class="file-item">
+      <span>📄</span><span class="fn">${esc(f.name)}</span>
+      <span class="fs">${fmtSize(f.size)}</span>
+      <button class="fx" onclick="removeFile(${i})" title="삭제">✕</button>
+    </div>`).join('');
+}
+function removeFile(i){ attachedFiles.splice(i,1); renderFileList(); }
+function fmtSize(b){ return b<1024?b+'B' : b<1048576?(b/1024).toFixed(0)+'KB' : (b/1048576).toFixed(1)+'MB'; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── 유효성 검사 (공통) ──
+function validateForm(){
+  const title = document.getElementById('inquiryTitle').value.trim();
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  if(!title){ alert('문의 제목을 입력해 주세요.'); return false; }
+  if(!Object.values(productStates).some(s=>s.type)){ alert('제작할 품목을 하나 이상 선택해 주세요.'); return false; }
+  if(!name){ alert('담당자명을 입력해 주세요.'); return false; }
+  const digits = phone.replace(/[^\d]/g,'');
+  if(digits.length<9 || digits.length>11){ alert('연락처를 정확히 입력해 주세요. (예: 010-1234-5678)'); return false; }
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ alert('이메일 형식이 올바르지 않아요.'); return false; }
+  if(!document.getElementById('agreePrivacy').checked){ alert('개인정보 수집·이용에 동의해 주세요.'); return false; }
+  return true;
+}
+
+// ── 제출 전 요약 ──
+function openSummary(){
+  if(!validateForm()) return;
+  const title = document.getElementById('inquiryTitle').value.trim();
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const org = document.getElementById('cOrg').value.trim();
+
+  let html = `<div class="ov-sec"><div class="ov-h">문의 제목</div><div class="ov-line"><span class="v">${esc(title)}</span></div></div>`;
+  Object.keys(productStates).forEach((id,i)=>{
+    const st=productStates[id]; if(!st.type) return;
+    const spec=SPECS[st.type];
+    let lines='';
+    (spec.fields||[]).forEach(f=>{
+      let v=(st.vals&&st.vals[f.key])||'';
+      if(v==='직접입력') v=(st.vals[f.key+'__custom']||'(미기재)');
+      if(v==='') return; // 빈 값은 요약에서 생략
+      lines+=`<div class="ov-line"><span class="k">${esc(f.label)}</span><span class="v">${esc(v)}</span></div>`;
+    });
+    html+=`<div class="ov-sec"><div class="ov-h">${spec.icon||''} 품목 ${i+1} · ${esc(spec.label)}</div>${lines||'<div class="ov-line"><span class="v" style="color:var(--faint)">세부사양 미입력 (전문가 추천)</span></div>'}</div>`;
+  });
+  html+=`<div class="ov-sec"><div class="ov-h">연락처</div>
+    <div class="ov-line"><span class="k">담당자</span><span class="v">${esc(name)}</span></div>
+    <div class="ov-line"><span class="k">연락처</span><span class="v">${esc(phone)}</span></div>
+    ${email?`<div class="ov-line"><span class="k">이메일</span><span class="v">${esc(email)}</span></div>`:''}
+    ${org?`<div class="ov-line"><span class="k">기관·회사</span><span class="v">${esc(org)}</span></div>`:''}
+    ${attachedFiles.length?`<div class="ov-line"><span class="k">첨부파일</span><span class="v">${attachedFiles.map(f=>esc(f.name)).join(', ')}</span></div>`:''}
+  </div>`;
+  document.getElementById('summaryBody').innerHTML=html;
+  document.getElementById('summaryOv').classList.add('on');
+}
+function closeSummary(){ document.getElementById('summaryOv').classList.remove('on'); }
+
 function buildMessage(){
   let msg = '';
   Object.keys(productStates).forEach((id,i)=>{
@@ -261,58 +497,119 @@ function buildMessage(){
   return msg;
 }
 
+// ── 제출 ──
+let submitting=false;
 async function submitForm(){
+  if(submitting) return;
+  if(!validateForm()){ closeSummary(); return; }
+  submitting=true;
+
+  const btn = document.getElementById('submitBtn');
+  const ovBtn = document.getElementById('ovSendBtn');
+  btn.disabled = true; btn.textContent = '보내는 중…';
+  if(ovBtn){ ovBtn.disabled=true; ovBtn.textContent='보내는 중…'; }
+
   const title = document.getElementById('inquiryTitle').value.trim();
   const name = document.getElementById('cName').value.trim();
   const phone = document.getElementById('cPhone').value.trim();
-  if(!title){ alert('문의 제목을 입력해 주세요.'); return; }
-  const hasType = Object.values(productStates).some(s=>s.type);
-  if(!hasType){ alert('제작할 품목을 하나 이상 선택해 주세요.'); return; }
-  if(!name){ alert('담당자명을 입력해 주세요.'); return; }
-  if(!phone){ alert('연락처를 입력해 주세요.'); return; }
-
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = '보내는 중…';
-
   const org = document.getElementById('cOrg').value.trim();
   const email = document.getElementById('cEmail').value.trim();
   const specMsg = buildMessage();
 
-  const payload = {
-    access_key: WEB3FORMS_KEY,
-    subject: `[제작문의] ${title}`,
-    from_name: `${name}${org?' ('+org+')':''}`,
-    "문의제목": title,
-    "담당자": name,
-    "연락처": phone,
-    "이메일": email||'(미기재)',
-    "기관·회사": org||'(미기재)',
-    "제작내용": specMsg
-  };
+  // 파일이 있으면 FormData(multipart), 없으면 JSON
+  let fetchOpts;
+  if(attachedFiles.length){
+    const fd = new FormData();
+    fd.append('access_key', WEB3FORMS_KEY);
+    fd.append('subject', `[제작문의] ${title}`);
+    fd.append('from_name', `${name}${org?' ('+org+')':''}`);
+    fd.append('문의제목', title);
+    fd.append('담당자', name);
+    fd.append('연락처', phone);
+    fd.append('이메일', email||'(미기재)');
+    fd.append('기관·회사', org||'(미기재)');
+    fd.append('제작내용', specMsg);
+    attachedFiles.forEach((f,i)=> fd.append(`첨부${i+1}`, f.file, f.name));
+    fetchOpts = { method:'POST', body:fd };
+  }else{
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: `[제작문의] ${title}`,
+      from_name: `${name}${org?' ('+org+')':''}`,
+      "문의제목": title, "담당자": name, "연락처": phone,
+      "이메일": email||'(미기재)', "기관·회사": org||'(미기재)', "제작내용": specMsg
+    };
+    fetchOpts = { method:'POST', headers:{'Content-Type':'application/json',Accept:'application/json'}, body:JSON.stringify(payload) };
+  }
 
   try{
-    const res = await fetch("https://api.web3forms.com/submit",{
-      method:"POST",
-      headers:{"Content-Type":"application/json",Accept:"application/json"},
-      body:JSON.stringify(payload)
-    });
+    const res = await fetch('https://api.web3forms.com/submit', fetchOpts);
     const data = await res.json();
     if(data.success){
-      document.getElementById('formView').style.display='none';
-      document.getElementById('doneView').style.display='block';
-      window.scrollTo(0,0);
+      savePast({ title, name, phone, org, email, specMsg, files:attachedFiles.map(f=>f.name), at:Date.now() });
+      closeSummary();
+      showDone(title, specMsg, name, phone);
     }else{
-      alert('전송에 실패했어요. 잠시 후 다시 시도하거나 전화로 문의해 주세요.\n(043-273-0929)');
-      btn.disabled=false; btn.textContent='문의 보내기';
+      failMsg(btn, ovBtn);
     }
   }catch(e){
-    alert('전송 중 오류가 발생했어요. 전화로 문의해 주세요.\n(043-273-0929)');
-    btn.disabled=false; btn.textContent='문의 보내기';
+    failMsg(btn, ovBtn);
   }
+  submitting=false;
 }
+function failMsg(btn, ovBtn){
+  alert('전송에 실패했어요. 잠시 후 다시 시도하거나 전화로 문의해 주세요.\n☎ 043-273-0929');
+  btn.disabled=false; btn.textContent='문의 내용 확인하기';
+  if(ovBtn){ ovBtn.disabled=false; ovBtn.textContent='문의 보내기 →'; }
+}
+function showDone(title, specMsg, name, phone){
+  document.getElementById('doneSummary').innerHTML =
+    `<div class="past-item"><div class="pt">${esc(title)}</div><div class="pd">${new Date().toLocaleString('ko-KR')} 접수</div><div class="pp">${esc(specMsg.trim())}\n\n담당자 ${esc(name)} · ${esc(phone)}</div></div>`;
+  document.getElementById('formView').style.display='none';
+  document.getElementById('doneView').style.display='block';
+  window.scrollTo(0,0);
+}
+
+// ── 지난 문의 (localStorage, 같은 기기 전용) ──
+const PAST_KEY='union_form_past';
+function savePast(rec){
+  try{
+    const arr=JSON.parse(localStorage.getItem(PAST_KEY)||'[]');
+    arr.unshift(rec);
+    localStorage.setItem(PAST_KEY, JSON.stringify(arr.slice(0,20)));
+  }catch(e){}
+}
+function loadPast(){
+  try{ return JSON.parse(localStorage.getItem(PAST_KEY)||'[]'); }catch(e){ return []; }
+}
+function refreshPastLink(){
+  document.getElementById('pastLink').style.display = loadPast().length ? '' : 'none';
+}
+function showPast(){
+  const arr=loadPast();
+  document.getElementById('pastBody').innerHTML = arr.length
+    ? arr.map(r=>`<div class="past-item">
+        <div class="pt">${esc(r.title)}</div>
+        <div class="pd">${new Date(r.at).toLocaleString('ko-KR')} 접수 · ${esc(r.name)} ${esc(r.phone)}</div>
+        <div class="pp">${esc((r.specMsg||'').trim())}${r.files&&r.files.length?'\n📎 '+r.files.map(esc).join(', '):''}</div>
+      </div>`).join('')
+    : '<p style="color:var(--faint);text-align:center;padding:20px">저장된 문의가 없어요.</p>';
+  document.getElementById('pastOv').classList.add('on');
+}
+function closePast(){ document.getElementById('pastOv').classList.remove('on'); }
+function clearPast(){
+  if(!confirm('이 기기에 저장된 문의 기록을 모두 삭제할까요?')) return;
+  try{ localStorage.removeItem(PAST_KEY); }catch(e){}
+  closePast(); refreshPastLink();
+}
+
+// 모달 배경 클릭 시 닫기
+document.getElementById('summaryOv').addEventListener('click',e=>{ if(e.target.id==='summaryOv') closeSummary(); });
+document.getElementById('pastOv').addEventListener('click',e=>{ if(e.target.id==='pastOv') closePast(); });
 
 // 초기 품목 1개
 addProduct();
+refreshPastLink();
 </script>
 </body>
 </html>
