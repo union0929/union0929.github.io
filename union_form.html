@@ -398,11 +398,22 @@ function updateRemoveButtons(){
 }
 
 // ── 전화번호 자동 하이픈 ──
+// 휴대폰 010-1234-5678 / 지역번호 043-123-4567 / 서울 02-123-4567, 02-1234-5678
 function autoHyphen(el){
-  let v = el.value.replace(/[^\d]/g,'').slice(0,11);
-  if(v.length<4) el.value=v;
-  else if(v.length<8) el.value=v.slice(0,3)+'-'+v.slice(3);
-  else el.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+  const v = el.value.replace(/[^\d]/g,'').slice(0,11);
+  let a;
+  if(v.startsWith('02')){
+    if(v.length<=2) a=v;
+    else if(v.length<=5) a=v.slice(0,2)+'-'+v.slice(2);
+    else if(v.length<=9) a=v.slice(0,2)+'-'+v.slice(2,5)+'-'+v.slice(5);
+    else a=v.slice(0,2)+'-'+v.slice(2,6)+'-'+v.slice(6,10);
+  }else{
+    if(v.length<=3) a=v;
+    else if(v.length<=6) a=v.slice(0,3)+'-'+v.slice(3);
+    else if(v.length<=10) a=v.slice(0,3)+'-'+v.slice(3,6)+'-'+v.slice(6);
+    else a=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+  }
+  el.value=a;
 }
 
 // ── 파일 첨부 ──
