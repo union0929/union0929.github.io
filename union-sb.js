@@ -34,6 +34,8 @@
       [/Invalid login credentials/i,        '이메일 또는 비밀번호가 맞지 않아요.'],
       [/Email not confirmed/i,              '가입 확인 메일의 링크를 먼저 눌러 주세요.'],
       [/User already registered/i,          '이미 가입된 이메일이에요. 로그인해 주세요.'],
+      [/profiles_org_required/i,            '기관 회원은 기관·단체명을 꼭 입력해 주세요.'],
+      [/Database error saving new user/i,   '가입 정보를 확인해 주세요. 기관 회원은 기관·단체명이 필요해요.'],
       [/Password should be at least/i,      '비밀번호는 8자 이상으로 정해 주세요.'],
       [/weak.?password|Password is known/i, '너무 쉬운 비밀번호예요. 다른 비밀번호를 써 주세요.'],
       [/Unable to validate email|invalid.*email/i, '이메일 주소 형식을 확인해 주세요.'],

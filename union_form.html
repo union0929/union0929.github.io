@@ -19,6 +19,10 @@
 
   /* 헤더 */
   header{padding:28px 0 20px;display:flex;align-items:center;gap:12px}
+  .hd-login{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:10px;background:var(--navy);color:#fff;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}
+  .hd-login:hover{background:var(--mint-deep)}
+  .member-hint{background:#fff;border:1.5px dashed var(--mint);border-radius:12px;padding:11px 14px;font-size:12.5px;color:var(--sub);margin-bottom:18px;line-height:1.55}
+  .member-hint a{color:var(--mint-deep);font-weight:800}
   .logo{width:46px;height:46px;border-radius:12px;background:var(--mint);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-1px;box-shadow:0 4px 14px rgba(78,203,186,.35)}
   .brand h1{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.2}
   .brand span{font-size:11px;font-weight:600;color:var(--mint-deep);letter-spacing:2px}
@@ -155,6 +159,7 @@
   <header>
     <div class="logo">U</div>
     <div class="brand"><h1>유니온 인쇄출판</h1><span>UNION PRINTING</span></div>
+    <a class="hd-login" href="account.html">🔐 로그인 · 내 주문</a>
   </header>
 
   <div id="formView">
@@ -162,6 +167,8 @@
       <h2>제작 문의</h2>
       <p>필요한 내용을 선택해 주시면 목적에 맞는 제작 방식과 견적을 안내드립니다.</p>
     </div>
+
+    <div class="member-hint">👤 <a href="account.html?tab=signup">회원가입</a>하면 견적·주문 진행 상황을 언제든 확인할 수 있어요. 이미 회원이면 <a href="account.html">로그인</a></div>
 
     <div class="hint-row">💡 잘 모르는 항목은 <b>"잘 모르겠음 (전문가 추천)"</b>을 선택하시면, 저희가 용도에 맞게 추천해 드려요.</div>
 

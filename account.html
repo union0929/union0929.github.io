@@ -49,6 +49,15 @@
   @media(max-width:520px){.grid2{grid-template-columns:1fr}}
   .hint{font-size:11.5px;color:var(--faint);margin-top:5px}
 
+  .ferr{color:var(--red);font-size:11.5px;font-weight:700;margin-left:6px}
+  .typeSeg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .typeSeg button{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:12px 10px;font:inherit;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer;transition:.15s}
+  .typeSeg button:hover{border-color:var(--mint);color:var(--mint-deep)}
+  .typeSeg button.on{border-color:var(--mint-deep);background:var(--mint-soft);color:var(--mint-deep);box-shadow:0 0 0 3px rgba(78,203,186,.15)}
+  .typeSeg button.on::before{content:'✓ '}
+  .typeSeg.bad button{border-color:#F2B8B8}
+  input.bad{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(217,106,106,.12)!important}
+  .agree.bad{border-color:#F2B8B8;background:#FFF5F5}
   .agree{display:flex;gap:9px;align-items:flex-start;background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:12px 13px;margin:6px 0 16px;cursor:pointer;font-size:13px;color:var(--navy2);font-weight:600}
   .agree input{width:17px;height:17px;margin-top:2px;accent-color:var(--mint-deep);flex:none}
 
@@ -135,18 +144,24 @@
 
       <!-- 회원가입 -->
       <div id="signupBox" class="hide">
-        <div class="field"><label>이메일 <span class="req">*</span></label><input type="email" id="suEmail" autocomplete="email" placeholder="견적 안내를 받을 이메일"></div>
+        <div class="field"><label>이메일 <span class="req">*</span><span class="ferr" id="e_suEmail"></span></label><input type="email" id="suEmail" autocomplete="email" placeholder="견적 안내를 받을 이메일"></div>
         <div class="grid2">
-          <div class="field"><label>비밀번호 <span class="req">*</span></label><input type="password" id="suPw" autocomplete="new-password" placeholder="8자 이상"></div>
-          <div class="field"><label>비밀번호 확인 <span class="req">*</span></label><input type="password" id="suPw2" autocomplete="new-password"></div>
+          <div class="field"><label>비밀번호 <span class="req">*</span><span class="ferr" id="e_suPw"></span></label><input type="password" id="suPw" autocomplete="new-password" placeholder="8자 이상"></div>
+          <div class="field"><label>비밀번호 확인 <span class="req">*</span><span class="ferr" id="e_suPw2"></span></label><input type="password" id="suPw2" autocomplete="new-password"></div>
         </div>
+        <div class="field"><label>가입 유형 <span class="req">*</span><span class="ferr" id="e_suType"></span></label>
+          <div class="typeSeg" id="suTypeSeg">
+            <button type="button" data-t="personal" onclick="setSuType('personal')">👤 개인</button>
+            <button type="button" data-t="org" onclick="setSuType('org')">🏢 기관·단체</button>
+          </div>
+        </div>
+        <div class="field hide" id="suOrgWrap"><label>기관·단체명 <span class="req">*</span><span class="ferr" id="e_suOrg"></span></label><input type="text" id="suOrg" autocomplete="organization" placeholder="예: 청주교육지원청 행정지원과"></div>
         <div class="grid2">
-          <div class="field"><label>담당자명 <span class="req">*</span></label><input type="text" id="suName" autocomplete="name"></div>
-          <div class="field"><label>연락처 <span class="req">*</span></label><input type="tel" id="suPhone" inputmode="numeric" placeholder="010-0000-0000" oninput="UNION.autoHyphen(this)"></div>
+          <div class="field"><label><span id="suNameLabel">담당자명</span> <span class="req">*</span><span class="ferr" id="e_suName"></span></label><input type="text" id="suName" autocomplete="name"></div>
+          <div class="field"><label>연락처 <span class="req">*</span><span class="ferr" id="e_suPhone"></span></label><input type="tel" id="suPhone" inputmode="numeric" placeholder="010-0000-0000" oninput="UNION.autoHyphen(this)"></div>
         </div>
-        <div class="field"><label>기관·회사명</label><input type="text" id="suOrg" autocomplete="organization" placeholder="예: 청주시청 총무과 (선택)"></div>
-        <label class="agree"><input type="checkbox" id="suAgree">
-          <span>(필수) <a href="privacy.html" target="_blank">개인정보 수집·이용</a>에 동의합니다.<br>
+        <label class="agree" id="agreeBox"><input type="checkbox" id="suAgree">
+          <span>(필수) <a href="privacy.html" target="_blank">개인정보 수집·이용</a>에 동의합니다.<span class="ferr" id="e_suAgree"></span><br>
           <span style="font-weight:400;color:var(--faint);font-size:12px">수집 항목: 이메일·담당자명·연락처·기관명 / 목적: 회원 관리, 견적·주문 안내 / 보유: 회원 탈퇴 시까지</span></span>
         </label>
         <button class="btn navy full" id="suBtn" onclick="doSignup()">가입하기</button>
@@ -202,7 +217,13 @@
         <div class="field"><label>담당자명</label><input type="text" id="pfName"></div>
         <div class="field"><label>연락처</label><input type="tel" id="pfPhone" inputmode="numeric" oninput="UNION.autoHyphen(this)"></div>
       </div>
-      <div class="field"><label>기관·회사명</label><input type="text" id="pfOrg"></div>
+      <div class="field"><label>회원 유형</label>
+        <div class="typeSeg" id="pfTypeSeg">
+          <button type="button" data-t="personal" onclick="setPfType('personal')">👤 개인</button>
+          <button type="button" data-t="org" onclick="setPfType('org')">🏢 기관·단체</button>
+        </div>
+      </div>
+      <div class="field" id="pfOrgWrap"><label>기관·단체명 <span class="req">*</span><span class="ferr" id="e_pfOrg"></span></label><input type="text" id="pfOrg"></div>
       <button class="btn navy sm" id="pfBtn" onclick="saveProfile()">정보 저장</button>
     </div>
 
@@ -246,6 +267,7 @@ function showTab(t){
   $('tabSignup').classList.toggle('on', t==='signup');
   $('authTitle').textContent = t==='signup'?'회원가입':(t==='reset'?'비밀번호 찾기':'로그인');
   msg('authMsg','');
+  clearSignupErrors();
 }
 
 /* ── 로그인 ── */
@@ -260,23 +282,84 @@ async function doLogin(){
   await enterAccount();
 }
 
-/* ── 회원가입 ── */
+/* ── 회원가입: 칸별 확인 (별표 옆 빨간 글씨) ── */
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let suType='';   // 'personal' | 'org' — 가입 시 반드시 선택
+function setSuType(t){
+  suType=t;
+  document.querySelectorAll('#suTypeSeg button').forEach(b=>b.classList.toggle('on', b.dataset.t===t));
+  $('suTypeSeg').classList.remove('bad'); $('e_suType').textContent='';
+  $('suOrgWrap').classList.toggle('hide', t!=='org');
+  $('suNameLabel').textContent = t==='personal' ? '이름' : '담당자명';
+  if(t==='org'){ $('suOrg').focus(); }
+  else { suTouched.suOrg=false; $('e_suOrg').textContent=''; $('suOrg').classList.remove('bad'); }
+}
+const SU_RULES={
+  suOrg:   v=> (suType==='org' && !v.trim()) ? '기관·단체명을 입력해 주세요' : '',
+  suEmail: v=> !v.trim() ? '입력해 주세요' : (!EMAIL_RE.test(v.trim()) ? '이메일 형식이 아니에요' : ''),
+  suPw:    v=> !v ? '입력해 주세요' : (v.length<8 ? '8자 이상 입력해 주세요' : ''),
+  suPw2:   v=> !v ? '한 번 더 입력해 주세요' : (v!==$('suPw').value ? '비밀번호가 달라요' : ''),
+  suName:  v=> !v.trim() ? '입력해 주세요' : '',
+  suPhone: v=>{ const d=v.replace(/[^\d]/g,''); return !d ? '입력해 주세요' : ((d.length<9||d.length>11) ? '번호를 끝까지 입력해 주세요' : ''); }
+};
+const suTouched={};
+function checkField(id){
+  const el=$(id); if(!el) return true;
+  const err=SU_RULES[id](el.value);
+  $('e_'+id).textContent = err ? '— '+err : '';
+  el.classList.toggle('bad', !!err);
+  return !err;
+}
+function checkAgree(){
+  const ok=$('suAgree').checked;
+  $('e_suAgree').textContent = ok ? '' : ' — 동의가 필요해요';
+  $('agreeBox').classList.toggle('bad', !ok);
+  return ok;
+}
+function clearSignupErrors(){
+  Object.keys(SU_RULES).forEach(id=>{ suTouched[id]=false; $('e_'+id).textContent=''; $(id).classList.remove('bad'); });
+  $('e_suAgree').textContent=''; $('agreeBox').classList.remove('bad');
+  $('e_suType').textContent=''; $('suTypeSeg').classList.remove('bad');
+}
+function bindSignupChecks(){
+  Object.keys(SU_RULES).forEach(id=>{
+    const el=$(id);
+    el.addEventListener('blur', ()=>{ suTouched[id]=true; checkField(id); });   // 그냥 지나치면 표시
+    el.addEventListener('input', ()=>{ if(suTouched[id]) checkField(id); });    // 고치면 바로 사라짐
+  });
+  // 비밀번호 확인은 치는 동안 바로 비교
+  $('suPw2').addEventListener('input', ()=>{ if($('suPw2').value.length>=$('suPw').value.length || suTouched.suPw2){ suTouched.suPw2=true; checkField('suPw2'); } });
+  // 위 비밀번호를 바꾸면 확인 칸도 다시 비교
+  $('suPw').addEventListener('input', ()=>{ if(suTouched.suPw2) checkField('suPw2'); });
+  $('suAgree').addEventListener('change', ()=>{ if($('e_suAgree').textContent) checkAgree(); });
+}
+
 async function doSignup(){
-  const email=$('suEmail').value.trim(), pw=$('suPw').value, pw2=$('suPw2').value;
-  const name=$('suName').value.trim(), phone=$('suPhone').value.trim(), org=$('suOrg').value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return msg('authMsg','이메일 주소를 확인해 주세요.');
-  if(pw.length<8) return msg('authMsg','비밀번호는 8자 이상으로 정해 주세요.');
-  if(pw!==pw2) return msg('authMsg','비밀번호 확인이 일치하지 않아요.');
-  if(!name) return msg('authMsg','담당자명을 입력해 주세요.');
-  const digits=phone.replace(/[^\d]/g,'');
-  if(digits.length<9||digits.length>11) return msg('authMsg','연락처를 정확히 입력해 주세요. (예: 010-1234-5678)');
-  if(!$('suAgree').checked) return msg('authMsg','개인정보 수집·이용에 동의해 주세요.');
+  let first=null;
+  const order=['suEmail','suPw','suPw2','suType','suOrg','suName','suPhone'];
+  order.forEach(id=>{
+    if(id==='suType'){
+      if(!suType){ $('e_suType').textContent='— 개인·기관 중 선택해 주세요'; $('suTypeSeg').classList.add('bad'); if(!first) first='suType'; }
+      return;
+    }
+    suTouched[id]=true; if(!checkField(id) && !first) first=id;
+  });
+  const agreeOk=checkAgree();
+  if(first){
+    if(first==='suType') $('suTypeSeg').scrollIntoView({behavior:'smooth',block:'center'});
+    else $(first).focus();
+    return;
+  }
+  if(!agreeOk){ $('agreeBox').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  const email=$('suEmail').value.trim(), pw=$('suPw').value;
+  const name=$('suName').value.trim(), phone=$('suPhone').value.trim();
+  const org = suType==='org' ? $('suOrg').value.trim() : '';
 
   busy('suBtn',true,'가입 중…');
   const { data, error } = await U.sb.auth.signUp({
     email, password:pw,
     options:{
-      data:{ name, org, phone, privacy_agree:'true' },
+      data:{ name, org, phone, member_type:suType, privacy_agree:'true' },
       emailRedirectTo: location.origin + location.pathname
     }
   });
@@ -287,7 +370,10 @@ async function doSignup(){
   if(data && data.user && Array.isArray(data.user.identities) && data.user.identities.length===0){
     return msg('authMsg','이미 가입된 이메일이에요. 로그인해 주세요.');
   }
-  if(data && data.session){ await enterAccount(true); return; }
+  if(data && data.session){
+    ['suPw','suPw2'].forEach(id=>$(id).value='');
+    await enterAccount(true); return;
+  }
   showTab('login');
   $('liEmail').value=email;
   msg('authMsg', `${email} 으로 가입 확인 메일을 보냈어요.\n메일의 링크를 누른 뒤 로그인해 주세요.`, 'ok');
@@ -317,9 +403,20 @@ async function doRecover(){
   msg('accMsg','비밀번호를 변경했어요.','ok');
 }
 
+/* ── 입력칸 비우기 (공용 PC에서 앞사람 정보가 남지 않게) ── */
+function clearAuthForms(){
+  ['liEmail','liPw','suEmail','suPw','suPw2','suName','suPhone','suOrg','rsEmail','rcPw','rcPw2',
+   'pfEmail','pfName','pfPhone','pfOrg'].forEach(id=>{ const e=$(id); if(e) e.value=''; });
+  $('suAgree').checked=false;
+  suType=''; document.querySelectorAll('#suTypeSeg button').forEach(b=>b.classList.remove('on'));
+  $('suOrgWrap').classList.add('hide'); $('suNameLabel').textContent='담당자명';
+  $('quoteList').innerHTML='';
+  clearSignupErrors();
+}
 /* ── 로그아웃 ── */
 async function doLogout(){
   await U.sb.auth.signOut();
+  clearAuthForms();
   show('authView'); showTab('login');
 }
 
@@ -330,11 +427,13 @@ async function enterAccount(justJoined){
   try{ p=await U.getProfile(); }catch(e){ msg('accMsg', U.krError(e)); }
   const u=await U.getUser();
   $('helloName').textContent=((p&&p.name)||'고객')+'님, 반가워요'+(justJoined?' 🎉':'');
-  $('helloOrg').textContent=(p&&p.org)||'';
+  const mt=(p&&p.member_type)==='org'?'org':'personal';
+  $('helloOrg').textContent= mt==='org' ? ((p&&p.org)||'') : '개인 회원';
   $('pfEmail').value=(u&&u.email)||'';
   $('pfName').value=(p&&p.name)||'';
   $('pfPhone').value=(p&&p.phone)||'';
   $('pfOrg').value=(p&&p.org)||'';
+  setPfType(mt);
   if(justJoined) msg('accMsg','가입이 완료됐어요. 이제 견적을 저장하고 주문 진행 상황을 여기서 확인할 수 있어요.','ok');
   await loadQuotes();
 }
@@ -397,18 +496,29 @@ async function delQuote(id){
   await loadQuotes();
 }
 
+let pfType='personal';
+function setPfType(t){
+  pfType=t;
+  document.querySelectorAll('#pfTypeSeg button').forEach(b=>b.classList.toggle('on', b.dataset.t===t));
+  $('pfOrgWrap').classList.toggle('hide', t!=='org');
+  $('e_pfOrg').textContent=''; $('pfOrg').classList.remove('bad');
+}
 async function saveProfile(){
-  const name=$('pfName').value.trim(), phone=$('pfPhone').value.trim(), org=$('pfOrg').value.trim();
-  if(!name) return msg('pfMsg','담당자명을 입력해 주세요.');
+  const name=$('pfName').value.trim(), phone=$('pfPhone').value.trim();
+  const org = pfType==='org' ? $('pfOrg').value.trim() : '';
+  if(!name) return msg('pfMsg','이름(담당자명)을 입력해 주세요.');
   const d=phone.replace(/[^\d]/g,'');
   if(d.length<9||d.length>11) return msg('pfMsg','연락처를 정확히 입력해 주세요.');
+  if(pfType==='org' && !org){
+    $('e_pfOrg').textContent='— 기관·단체명을 입력해 주세요'; $('pfOrg').classList.add('bad'); $('pfOrg').focus(); return;
+  }
   const u=await U.getUser(); if(!u) return doLogout();
   busy('pfBtn',true,'저장 중…');
-  const { error } = await U.sb.from('profiles').update({ name, phone, org }).eq('id', u.id);
+  const { error } = await U.sb.from('profiles').update({ name, phone, org, member_type:pfType }).eq('id', u.id);
   busy('pfBtn',false);
   if(error) return msg('pfMsg', U.krError(error));
   $('helloName').textContent=name+'님, 반가워요';
-  $('helloOrg').textContent=org;
+  $('helloOrg').textContent= pfType==='org' ? org : '개인 회원';
   msg('pfMsg','저장했어요.','ok');
 }
 
@@ -420,12 +530,14 @@ async function doWithdraw(){
   const { error } = await U.sb.rpc('delete_my_account');
   if(error){ msg('accMsg', U.krError(error)); window.scrollTo(0,0); return; }
   await U.sb.auth.signOut();
+  clearAuthForms();
   show('authView'); showTab('login');
   msg('authMsg','탈퇴가 완료됐어요. 그동안 이용해 주셔서 감사합니다.','ok');
 }
 
 /* ── 시작 ── */
 (async function init(){
+  bindSignupChecks();
   if(!U.ready){
     $('loadingView').innerHTML='회원 기능을 불러오지 못했어요.<br>잠시 후 새로고침하거나 043-273-0929로 연락 주세요.';
     return;
