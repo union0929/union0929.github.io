@@ -136,17 +136,17 @@
 
       <!-- 로그인 -->
       <div id="loginBox">
-        <div class="field"><label>이메일</label><input type="email" id="liEmail" autocomplete="email" placeholder="example@school.go.kr"></div>
-        <div class="field"><label>비밀번호</label><input type="password" id="liPw" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+        <div class="field"><label>이메일</label><input type="email" id="liEmail" name="username" autocomplete="username" placeholder="example@school.go.kr"></div>
+        <div class="field"><label>비밀번호</label><input type="password" id="liPw" name="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
         <button class="btn navy full" id="liBtn" onclick="doLogin()">로그인</button>
         <div style="text-align:center;margin-top:12px"><button class="linkbtn" onclick="showTab('reset')">비밀번호를 잊으셨나요?</button></div>
       </div>
 
       <!-- 회원가입 -->
       <div id="signupBox" class="hide">
-        <div class="field"><label>이메일 <span class="req">*</span><span class="ferr" id="e_suEmail"></span></label><input type="email" id="suEmail" autocomplete="email" placeholder="견적 안내를 받을 이메일"></div>
+        <div class="field"><label>이메일 <span class="req">*</span><span class="ferr" id="e_suEmail"></span></label><input type="email" id="suEmail" name="username" autocomplete="username" placeholder="견적 안내를 받을 이메일"></div>
         <div class="grid2">
-          <div class="field"><label>비밀번호 <span class="req">*</span><span class="ferr" id="e_suPw"></span></label><input type="password" id="suPw" autocomplete="new-password" placeholder="8자 이상"></div>
+          <div class="field"><label>비밀번호 <span class="req">*</span><span class="ferr" id="e_suPw"></span></label><input type="password" id="suPw" name="new-password" autocomplete="new-password" placeholder="8자 이상"></div>
           <div class="field"><label>비밀번호 확인 <span class="req">*</span><span class="ferr" id="e_suPw2"></span></label><input type="password" id="suPw2" autocomplete="new-password"></div>
         </div>
         <div class="field"><label>가입 유형 <span class="req">*</span><span class="ferr" id="e_suType"></span></label>
@@ -157,7 +157,7 @@
         </div>
         <div class="field hide" id="suOrgWrap"><label>기관·단체명 <span class="req">*</span><span class="ferr" id="e_suOrg"></span></label><input type="text" id="suOrg" autocomplete="organization" placeholder="예: 청주교육지원청 행정지원과"></div>
         <div class="grid2">
-          <div class="field"><label><span id="suNameLabel">담당자명</span> <span class="req">*</span><span class="ferr" id="e_suName"></span></label><input type="text" id="suName" autocomplete="name"></div>
+          <div class="field"><label><span id="suNameLabel">담당자명</span> <span class="req">*</span><span class="ferr" id="e_suName"></span></label><input type="text" id="suName" name="fullname" autocomplete="name"></div>
           <div class="field"><label>연락처 <span class="req">*</span><span class="ferr" id="e_suPhone"></span></label><input type="tel" id="suPhone" inputmode="numeric" placeholder="010-0000-0000" oninput="UNION.autoHyphen(this)"></div>
         </div>
         <label class="agree" id="agreeBox"><input type="checkbox" id="suAgree">

@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>제작 문의 — 유니온 인쇄출판</title>
 <script src="options.js"></script>
+<!-- 회원 로그인 상태 확인용 (불러오지 못해도 문의 폼은 그대로 동작) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js"></script>
+<script src="union-sb.js"></script>
 <style>
   :root{
     --mint:#4ECBBA; --mint-deep:#2FA898; --mint-soft:#E8F7F4;
@@ -159,7 +162,7 @@
   <header>
     <div class="logo">U</div>
     <div class="brand"><h1>유니온 인쇄출판</h1><span>UNION PRINTING</span></div>
-    <a class="hd-login" href="account.html">🔐 로그인 · 내 주문</a>
+    <a class="hd-login" id="hdLogin" href="account.html">🔐 로그인 · 내 주문</a>
   </header>
 
   <div id="formView">
@@ -168,7 +171,7 @@
       <p>필요한 내용을 선택해 주시면 목적에 맞는 제작 방식과 견적을 안내드립니다.</p>
     </div>
 
-    <div class="member-hint">👤 <a href="account.html?tab=signup">회원가입</a>하면 견적·주문 진행 상황을 언제든 확인할 수 있어요. 이미 회원이면 <a href="account.html">로그인</a></div>
+    <div class="member-hint" id="memberHint">👤 <a href="account.html?tab=signup">회원가입</a>하면 견적·주문 진행 상황을 언제든 확인할 수 있어요. 이미 회원이면 <a href="account.html">로그인</a></div>
 
     <div class="hint-row">💡 잘 모르는 항목은 <b>"잘 모르겠음 (전문가 추천)"</b>을 선택하시면, 저희가 용도에 맞게 추천해 드려요.</div>
 
@@ -628,6 +631,27 @@ document.getElementById('pastOv').addEventListener('click',e=>{ if(e.target.id==
 // 초기 품목 1개
 addProduct();
 refreshPastLink();
+
+// ── 회원 로그인 상태 반영: 버튼 이름 바꾸고, 연락처 칸을 회원 정보로 채움 ──
+(async function memberSync(){
+  try{
+    const U=window.UNION;
+    if(!U || !U.ready) return;                 // 회원 기능을 못 불러와도 문의 폼은 정상 동작
+    const u=await U.getUser(); if(!u) return;  // 비로그인: 기본 안내 그대로
+    const p=await U.getProfile();
+    const name=(p&&p.name)||'회원';
+    const btn=document.getElementById('hdLogin');
+    if(btn) btn.textContent='👤 '+name+'님 · 내 주문';
+    // 비어 있는 칸만 채움 (이미 적은 내용은 건드리지 않음)
+    const fill=(id,v)=>{ const el=document.getElementById(id); if(el && !el.value.trim() && v) el.value=v; };
+    fill('cName', p&&p.name);
+    fill('cPhone', p&&p.phone);
+    fill('cEmail', u.email);
+    if(p && p.member_type==='org') fill('cOrg', p.org);
+    const hint=document.getElementById('memberHint');
+    if(hint) hint.innerHTML='✅ <b>'+U.esc(name)+'</b>님으로 로그인되어 있어요. 연락처는 회원 정보로 채워뒀어요. <a href="account.html">내 주문 보기</a>';
+  }catch(e){ /* 조용히 무시 — 문의 폼 기능에는 영향 없음 */ }
+})();
 </script>
 </body>
 </html>
